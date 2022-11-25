@@ -10,6 +10,8 @@ import { setContext } from '@apollo/client/link/context'
 import { Chart, LinearScale, PointElement, LineElement, TimeScale } from 'chart.js'
 import 'chartjs-adapter-luxon'
 
+import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
+
 import { getToken } from '../lib/auth'
 
 // Setup dayjs
@@ -39,10 +41,20 @@ const apolloClient = new ApolloClient({
   cache: new InMemoryCache()
 })
 
+// Setup Material UI
+const lightTheme = createTheme({
+  palette: {
+    mode: 'light',
+  },
+})
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={apolloClient}>
-      <Component {...pageProps} />
+      <ThemeProvider theme={lightTheme}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </ApolloProvider>
   )
 }
