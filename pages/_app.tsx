@@ -7,7 +7,7 @@ import dayjsTimezone from 'dayjs/plugin/timezone'
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 
-import { Chart, LinearScale, PointElement, LineElement, TimeScale } from 'chart.js'
+import { Chart, LinearScale, PointElement, LineElement, Tooltip, Legend, TimeScale } from 'chart.js'
 import 'chartjs-adapter-luxon'
 
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
@@ -19,7 +19,7 @@ dayjs.extend(dayjsUtc)
 dayjs.extend(dayjsTimezone)
 
 // Setup Chart.js
-Chart.register(LinearScale, PointElement, LineElement, TimeScale)
+Chart.register(LinearScale, PointElement, LineElement, Tooltip, Legend, TimeScale)
 
 // Setup Apollo client
 const httpLink = createHttpLink({
