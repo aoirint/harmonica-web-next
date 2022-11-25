@@ -40,7 +40,7 @@ export default function HomePage() {
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <MainAppBar />
-        <MainDrawer />
+        {/* <MainDrawer /> */}
         <Container component="main" sx={{ mt: 3, flexGrow: 1 }}>
           <Toolbar />
           <Typography variant="h5" component="h2">Light</Typography>
