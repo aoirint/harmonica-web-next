@@ -3,8 +3,11 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import { setToken } from '../../auth'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import { useApolloClient } from '@apollo/client'
 
 export default function AccountMenuIcon() {
+  const apolloClient = useApolloClient()
+
   const router = useRouter()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
@@ -17,6 +20,7 @@ export default function AccountMenuIcon() {
   }
 
   const handleLogout = (): void => {
+    apolloClient.clearStore()
     setToken(null)
     router.push('/login')
   }
