@@ -1,11 +1,19 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import dayjs from 'dayjs'
+import dayjsUtc from 'dayjs/plugin/utc'
+import dayjsTimezone from 'dayjs/plugin/timezone'
 
 import { ApolloClient, ApolloProvider, createHttpLink, InMemoryCache } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 
 import { getToken } from '../lib/auth'
 
+// Setup dayjs
+dayjs.extend(dayjsUtc)
+dayjs.extend(dayjsTimezone)
+
+// Setup Apollo client
 const httpLink = createHttpLink({
   uri: `${process.env.NEXT_PUBLIC_HASURA_URL}/v1/graphql`,
 })
