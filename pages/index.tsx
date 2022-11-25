@@ -49,23 +49,23 @@ export default function HomePage() {
 
           <Grid container spacing={2}>
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" component="h2">Light</Typography>
+              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Light</Typography>
               <LightChart lightData={data?.light ?? []} />
             </Grid>
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" component="h2">Humidity</Typography>
+              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Humidity</Typography>
               <HumidityChart humidityData={data?.humidity ?? []} />
             </Grid>
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" component="h2">Temperature</Typography>
+              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Temperature</Typography>
               <TemperatureChart temperatureData={data?.temperature ?? []} />
             </Grid>
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" component="h2">CO2</Typography>
+              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>CO2</Typography>
               <Co2Chart co2Data={data?.mhz19Co2 ?? []} />
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="h6" component="h2">Ping</Typography>
+              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Ping</Typography>
               <SmokePingChartImage timestampEpoch={nowDayjs.unix()} />
             </Grid>
           </Grid>
