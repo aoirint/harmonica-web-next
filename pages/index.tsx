@@ -8,6 +8,7 @@ import MainDrawer from '../lib/components/drawer/main_drawer'
 import { useGetMonitorQuery } from '../lib/graphql-types'
 import dayjs from 'dayjs'
 import Co2Chart from '../lib/components/chart/co2_chart'
+import TemperatureChart from '../lib/components/chart/temperature_chart'
 
 export default function HomePage() {
   const router = useRouter()
@@ -59,13 +60,7 @@ export default function HomePage() {
             ))}
           </Typography>
           <Typography variant="h5" component="h2">Temperature</Typography>
-          <Typography paragraph>
-            {data?.temperature?.map((temperature) => (
-              <>
-                {temperature.value},
-              </>
-            ))}
-          </Typography>
+          <TemperatureChart temperatureData={data?.temperature ?? []} />
           <Typography variant="h5" component="h2">CO2</Typography>
           <Co2Chart co2Data={data?.mhz19Co2 ?? []} />
         </Container>
