@@ -11,6 +11,7 @@ import Co2Chart from '../lib/components/chart/co2_chart'
 import TemperatureChart from '../lib/components/chart/temperature_chart'
 import LightChart from '../lib/components/chart/light_chart'
 import HumidityChart from '../lib/components/chart/humidity_chart'
+import SmokePingChartImage from '../lib/components/smoke_ping_chart_image'
 
 export default function HomePage() {
   const router = useRouter()
@@ -62,6 +63,10 @@ export default function HomePage() {
             <Grid item xs={12} md={4}>
               <Typography variant="h5" component="h2">CO2</Typography>
               <Co2Chart co2Data={data?.mhz19Co2 ?? []} />
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Typography variant="h5" component="h2">Ping</Typography>
+              <SmokePingChartImage timestampEpoch={nowDayjs.unix()} />
             </Grid>
           </Grid>
         </Container>
