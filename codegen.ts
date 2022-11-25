@@ -13,7 +13,7 @@ const config: CodegenConfig = {
   documents: "pages/**/*.tsx",
   ignoreNoDocuments: true,
   generates: {
-    "./generated/gql/": {
+    "./lib/generated/gql/": {
       preset: "client",
       plugins: []
     }
