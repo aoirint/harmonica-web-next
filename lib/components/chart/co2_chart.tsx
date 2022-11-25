@@ -48,10 +48,6 @@ export default function Co2Chart({
       },
       co2: {
         position: 'left',
-        title: {
-          display: true,
-          text: 'CO2 / ppm'
-        },
         suggestedMin: 200,
         suggestedMax: 1400
       }

@@ -48,10 +48,6 @@ export default function TemperatureChart({
       },
       temperature: {
         position: 'left',
-        title: {
-          display: true,
-          text: 'Temperature / ℃'
-        },
         suggestedMin: 0,
         suggestedMax: 40
       }

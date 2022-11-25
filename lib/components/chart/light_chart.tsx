@@ -48,10 +48,6 @@ export default function LightChart({
       },
       light: {
         position: 'left',
-        title: {
-          display: true,
-          text: 'Light / %'
-        },
         suggestedMin: 0,
         suggestedMax: 100
       }

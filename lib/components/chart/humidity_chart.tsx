@@ -48,10 +48,6 @@ export default function HumidityChart({
       },
       humidity: {
         position: 'left',
-        title: {
-          display: true,
-          text: 'Humidity / %'
-        },
         suggestedMin: 0,
         suggestedMax: 100
       }
