@@ -44,7 +44,7 @@ export default function HomePage() {
         <CssBaseline />
         <MainAppBar />
         {/* <MainDrawer /> */}
-        <Container component="main" sx={{ mt: 3, flexGrow: 1 }}>
+        <Container component="main" maxWidth={false} sx={{ mt: 3, flexGrow: 1 }}>
           <Toolbar />
 
           <Grid container spacing={2}>
