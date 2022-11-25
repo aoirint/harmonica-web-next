@@ -5,9 +5,22 @@ import { useRouter } from 'next/router'
 import { Box, Container, CssBaseline, Toolbar, Typography } from '@mui/material'
 import MainAppBar from '../lib/components/app_bar/main_app_bar'
 import MainDrawer from '../lib/components/drawer/main_drawer'
+import { useGetMonitorQuery } from '../lib/graphql-types'
+import dayjs from 'dayjs'
 
 export default function HomePage() {
   const router = useRouter()
+  const nowDayjs = dayjs().tz()
+  const yesterdayDayjs = nowDayjs.subtract(1, 'day')
+
+  const { data } = useGetMonitorQuery({
+    variables: {
+      timestampComp: {
+        _gte: yesterdayDayjs.format(),
+        _lt: nowDayjs.format()
+      }
+    }
+  })
 
   useEffect(() => {
     if (! hasToken()) {
@@ -28,8 +41,37 @@ export default function HomePage() {
         <MainDrawer />
         <Container component="main" sx={{ mt: 3, flexGrow: 1 }}>
           <Toolbar />
+          <Typography variant="h5" component="h2">Light</Typography>
           <Typography paragraph>
-            aaa
+            {data?.light?.map((light) => (
+              <>
+                {light.value},
+              </>
+            ))}
+          </Typography>
+          <Typography variant="h5" component="h2">Humidity</Typography>
+          <Typography paragraph>
+            {data?.humidity?.map((humidity) => (
+              <>
+                {humidity.value},
+              </>
+            ))}
+          </Typography>
+          <Typography variant="h5" component="h2">Temperature</Typography>
+          <Typography paragraph>
+            {data?.temperature?.map((temperature) => (
+              <>
+                {temperature.value},
+              </>
+            ))}
+          </Typography>
+          <Typography variant="h5" component="h2">CO2</Typography>
+          <Typography paragraph>
+            {data?.mhz19Co2?.map((co2) => (
+              <>
+                {co2.value},
+              </>
+            ))}
           </Typography>
         </Container>
       </Box>
