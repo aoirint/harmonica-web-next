@@ -47,6 +47,7 @@ export default function LoginPage() {
                 <TextField
                   {...field}
                   label="JWT Token"
+                  type="password"
                   fullWidth
                   required
                 />
