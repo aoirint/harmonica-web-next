@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { hasToken } from '../lib/auth'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { Box, Container, CssBaseline, Toolbar, Typography } from '@mui/material'
+import { Box, Container, CssBaseline, Grid, Toolbar, Typography } from '@mui/material'
 import MainAppBar from '../lib/components/app_bar/main_app_bar'
 import MainDrawer from '../lib/components/drawer/main_drawer'
 import { useGetMonitorQuery } from '../lib/graphql-types'
@@ -45,17 +45,25 @@ export default function HomePage() {
         {/* <MainDrawer /> */}
         <Container component="main" sx={{ mt: 3, flexGrow: 1 }}>
           <Toolbar />
-          <Typography variant="h5" component="h2">Light</Typography>
-          <LightChart lightData={data?.light ?? []} />
 
-          <Typography variant="h5" component="h2">Humidity</Typography>
-          <HumidityChart humidityData={data?.humidity ?? []} />
-
-          <Typography variant="h5" component="h2">Temperature</Typography>
-          <TemperatureChart temperatureData={data?.temperature ?? []} />
-
-          <Typography variant="h5" component="h2">CO2</Typography>
-          <Co2Chart co2Data={data?.mhz19Co2 ?? []} />
+          <Grid container spacing={2}>
+            <Grid item xs={4}>
+              <Typography variant="h5" component="h2">Light</Typography>
+              <LightChart lightData={data?.light ?? []} />
+            </Grid>
+            <Grid item xs={4}>
+              <Typography variant="h5" component="h2">Humidity</Typography>
+              <HumidityChart humidityData={data?.humidity ?? []} />
+            </Grid>
+            <Grid item xs={4}>
+              <Typography variant="h5" component="h2">Temperature</Typography>
+              <TemperatureChart temperatureData={data?.temperature ?? []} />
+            </Grid>
+            <Grid item xs={4}>
+              <Typography variant="h5" component="h2">CO2</Typography>
+              <Co2Chart co2Data={data?.mhz19Co2 ?? []} />
+            </Grid>
+          </Grid>
         </Container>
       </Box>
     </div>
