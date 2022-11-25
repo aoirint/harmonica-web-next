@@ -28,6 +28,11 @@ export default function LightChart({
     ]
   }
   const options: ChartOptions<"line"> = {
+    plugins: {
+      legend: {
+        display: false
+      }
+    },
     responsive: true,
     scales: {
       x: {

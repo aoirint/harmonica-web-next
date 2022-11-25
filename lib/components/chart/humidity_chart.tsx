@@ -28,6 +28,11 @@ export default function HumidityChart({
     ]
   }
   const options: ChartOptions<"line"> = {
+    plugins: {
+      legend: {
+        display: false
+      }
+    },
     responsive: true,
     scales: {
       x: {
