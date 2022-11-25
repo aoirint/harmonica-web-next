@@ -47,8 +47,8 @@ export default function Co2Chart({
           display: true,
           text: 'CO2'
         },
-        suggestedMin: 0,
-        suggestedMax: 1023
+        suggestedMin: 200,
+        suggestedMax: 1400
       }
     }
   }
