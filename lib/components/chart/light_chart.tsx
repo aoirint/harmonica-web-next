@@ -21,7 +21,7 @@ export default function LightChart({
       {
         label: 'Light',
         yAxisID: 'light',
-        data: lightData.map((point) => point.value),
+        data: lightData.map((point) => point.value / 1023.0 * 100),
         fill: false,
         tension: 0
       }
@@ -45,10 +45,10 @@ export default function LightChart({
         position: 'left',
         title: {
           display: true,
-          text: 'Light'
+          text: 'Light / %'
         },
         suggestedMin: 0,
-        suggestedMax: 1023
+        suggestedMax: 100
       }
     }
   }
