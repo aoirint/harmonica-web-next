@@ -10,6 +10,7 @@ import dayjs from 'dayjs'
 import Co2Chart from '../lib/components/chart/co2_chart'
 import TemperatureChart from '../lib/components/chart/temperature_chart'
 import LightChart from '../lib/components/chart/light_chart'
+import HumidityChart from '../lib/components/chart/humidity_chart'
 
 export default function HomePage() {
   const router = useRouter()
@@ -48,13 +49,7 @@ export default function HomePage() {
           <LightChart lightData={data?.light ?? []} />
 
           <Typography variant="h5" component="h2">Humidity</Typography>
-          <Typography paragraph>
-            {data?.humidity?.map((humidity) => (
-              <>
-                {humidity.value},
-              </>
-            ))}
-          </Typography>
+          <HumidityChart humidityData={data?.humidity ?? []} />
 
           <Typography variant="h5" component="h2">Temperature</Typography>
           <TemperatureChart temperatureData={data?.temperature ?? []} />
