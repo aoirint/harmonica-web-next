@@ -15,12 +15,12 @@ import HumidityChart from '../lib/components/chart/humidity_chart'
 export default function HomePage() {
   const router = useRouter()
   const nowDayjs = dayjs().tz()
-  const yesterdayDayjs = nowDayjs.subtract(1, 'day')
+  const startDayjs = nowDayjs.subtract(6, 'hour')
 
   const { data } = useGetMonitorQuery({
     variables: {
       timestampComp: {
-        _gte: yesterdayDayjs.format(),
+        _gte: startDayjs.format(),
         _lt: nowDayjs.format()
       }
     }
