@@ -7,11 +7,11 @@ export default function AnonymousAppBar() {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Login
         </Typography>
-        <Box>
+        {/* <Box>
           <Button sx={{ color: '#fff' }}>
             License
           </Button>
-        </Box>
+        </Box> */}
       </Toolbar>
     </AppBar>
   )

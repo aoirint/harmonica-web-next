@@ -18,11 +18,11 @@ export default function MainAppBar() {
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           Harmonica
         </Typography>
-        <Box>
+        {/* <Box>
           <Button sx={{ color: '#fff' }}>
             License
           </Button>
-        </Box>
+        </Box> */}
         <AccountMenuIcon />
       </Toolbar>
     </AppBar>
