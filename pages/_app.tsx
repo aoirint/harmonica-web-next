@@ -21,6 +21,10 @@ dayjs.extend(dayjsTimezone)
 // Setup Chart.js
 Chart.register(LinearScale, PointElement, LineElement, Tooltip, Legend, TimeScale, Colors)
 
+// Dark color
+Chart.defaults.borderColor = '#444c56'
+Chart.defaults.color = '#adbac7'
+
 // Setup Apollo client
 const httpLink = createHttpLink({
   uri: `${process.env.NEXT_PUBLIC_HASURA_URL}/v1/graphql`,
@@ -42,16 +46,16 @@ const apolloClient = new ApolloClient({
 })
 
 // Setup Material UI
-const lightTheme = createTheme({
+const darkTheme = createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
   },
 })
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={apolloClient}>
-      <ThemeProvider theme={lightTheme}>
+      <ThemeProvider theme={darkTheme}>
         <CssBaseline />
         <Component {...pageProps} />
       </ThemeProvider>
