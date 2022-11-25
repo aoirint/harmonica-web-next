@@ -9,6 +9,7 @@ import { useGetMonitorQuery } from '../lib/graphql-types'
 import dayjs from 'dayjs'
 import Co2Chart from '../lib/components/chart/co2_chart'
 import TemperatureChart from '../lib/components/chart/temperature_chart'
+import LightChart from '../lib/components/chart/light_chart'
 
 export default function HomePage() {
   const router = useRouter()
@@ -44,13 +45,8 @@ export default function HomePage() {
         <Container component="main" sx={{ mt: 3, flexGrow: 1 }}>
           <Toolbar />
           <Typography variant="h5" component="h2">Light</Typography>
-          <Typography paragraph>
-            {data?.light?.map((light) => (
-              <>
-                {light.value},
-              </>
-            ))}
-          </Typography>
+          <LightChart lightData={data?.light ?? []} />
+
           <Typography variant="h5" component="h2">Humidity</Typography>
           <Typography paragraph>
             {data?.humidity?.map((humidity) => (
@@ -59,8 +55,10 @@ export default function HomePage() {
               </>
             ))}
           </Typography>
+
           <Typography variant="h5" component="h2">Temperature</Typography>
           <TemperatureChart temperatureData={data?.temperature ?? []} />
+
           <Typography variant="h5" component="h2">CO2</Typography>
           <Co2Chart co2Data={data?.mhz19Co2 ?? []} />
         </Container>
