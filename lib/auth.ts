@@ -1,5 +1,3 @@
-import { apolloClient } from "./apollo";
-
 function isBrowser(): boolean {
   return typeof window !== 'undefined'
 }
