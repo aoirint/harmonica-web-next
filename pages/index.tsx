@@ -7,6 +7,7 @@ import MainAppBar from '../lib/components/app_bar/main_app_bar'
 import MainDrawer from '../lib/components/drawer/main_drawer'
 import { useGetMonitorQuery } from '../lib/graphql-types'
 import dayjs from 'dayjs'
+import Co2Chart from '../lib/components/chart/co2_chart'
 
 export default function HomePage() {
   const router = useRouter()
@@ -73,6 +74,7 @@ export default function HomePage() {
               </>
             ))}
           </Typography>
+          <Co2Chart co2Data={data?.mhz19Co2 ?? []} />
         </Container>
       </Box>
     </div>
