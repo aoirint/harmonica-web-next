@@ -67,13 +67,6 @@ export default function HomePage() {
             ))}
           </Typography>
           <Typography variant="h5" component="h2">CO2</Typography>
-          <Typography paragraph>
-            {data?.mhz19Co2?.map((co2) => (
-              <>
-                {co2.value},
-              </>
-            ))}
-          </Typography>
           <Co2Chart co2Data={data?.mhz19Co2 ?? []} />
         </Container>
       </Box>
