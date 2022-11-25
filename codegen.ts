@@ -10,12 +10,15 @@ const config: CodegenConfig = {
       }
     }
   },
-  documents: "pages/**/*.tsx",
+  documents: "pages/**/*.graphql",
   ignoreNoDocuments: true,
   generates: {
-    "./lib/generated/gql/": {
-      preset: "client",
-      plugins: []
+    "./lib/graphql-types.ts": {
+      plugins: [
+        'typescript',
+        'typescript-operations',
+        'typescript-react-apollo',
+      ]
     }
   }
 };

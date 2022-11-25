@@ -1,0 +1,35 @@
+query getMonitor(
+  $timestampComp: timestamptz_comparison_exp!
+) {
+  light: SensorValue(
+    order_by: { timestamp: asc }
+    where: { key: { _eq: "light" }, timestamp: $timestampComp }
+  ) {
+    value
+    timestamp
+  }
+
+  temperature: SensorValue(
+    order_by: { timestamp: asc }
+    where: { key: { _eq: "temperature" }, timestamp: $timestampComp }
+  ) {
+    value
+    timestamp
+  }
+
+  humidity: SensorValue(
+    order_by: { timestamp: asc }
+    where: { key: { _eq: "humidity" }, timestamp: $timestampComp }
+  ) {
+    value
+    timestamp
+  }
+
+  mhz19Co2: SensorValue(
+    order_by: { timestamp: asc }
+    where: { key: { _eq: "mhz19_co2" }, timestamp: $timestampComp }
+  ) {
+    value
+    timestamp
+  }
+}

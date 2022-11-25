@@ -1,9 +1,11 @@
-/* eslint-disable */
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -497,3 +499,72 @@ export type Uuid_Comparison_Exp = {
   _neq?: InputMaybe<Scalars['uuid']>;
   _nin?: InputMaybe<Array<Scalars['uuid']>>;
 };
+
+export type GetMonitorQueryVariables = Exact<{
+  timestampComp: Timestamptz_Comparison_Exp;
+}>;
+
+
+export type GetMonitorQuery = { __typename?: 'query_root', light: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, temperature: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, humidity: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, mhz19Co2: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }> };
+
+
+export const GetMonitorDocument = gql`
+    query getMonitor($timestampComp: timestamptz_comparison_exp!) {
+  light: SensorValue(
+    order_by: {timestamp: asc}
+    where: {key: {_eq: "light"}, timestamp: $timestampComp}
+  ) {
+    value
+    timestamp
+  }
+  temperature: SensorValue(
+    order_by: {timestamp: asc}
+    where: {key: {_eq: "temperature"}, timestamp: $timestampComp}
+  ) {
+    value
+    timestamp
+  }
+  humidity: SensorValue(
+    order_by: {timestamp: asc}
+    where: {key: {_eq: "humidity"}, timestamp: $timestampComp}
+  ) {
+    value
+    timestamp
+  }
+  mhz19Co2: SensorValue(
+    order_by: {timestamp: asc}
+    where: {key: {_eq: "mhz19_co2"}, timestamp: $timestampComp}
+  ) {
+    value
+    timestamp
+  }
+}
+    `;
+
+/**
+ * __useGetMonitorQuery__
+ *
+ * To run a query within a React component, call `useGetMonitorQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetMonitorQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetMonitorQuery({
+ *   variables: {
+ *      timestampComp: // value for 'timestampComp'
+ *   },
+ * });
+ */
+export function useGetMonitorQuery(baseOptions: Apollo.QueryHookOptions<GetMonitorQuery, GetMonitorQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetMonitorQuery, GetMonitorQueryVariables>(GetMonitorDocument, options);
+      }
+export function useGetMonitorLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetMonitorQuery, GetMonitorQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetMonitorQuery, GetMonitorQueryVariables>(GetMonitorDocument, options);
+        }
+export type GetMonitorQueryHookResult = ReturnType<typeof useGetMonitorQuery>;
+export type GetMonitorLazyQueryHookResult = ReturnType<typeof useGetMonitorLazyQuery>;
+export type GetMonitorQueryResult = Apollo.QueryResult<GetMonitorQuery, GetMonitorQueryVariables>;
