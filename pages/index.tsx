@@ -64,7 +64,7 @@ export default function HomePage() {
               <Typography variant="h5" component="h2">CO2</Typography>
               <Co2Chart co2Data={data?.mhz19Co2 ?? []} />
             </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={6}>
               <Typography variant="h5" component="h2">Ping</Typography>
               <SmokePingChartImage timestampEpoch={nowDayjs.unix()} />
             </Grid>
