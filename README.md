@@ -14,8 +14,19 @@
 ```shell
 nvm use
 
+npm ci
+
 npm run codegen -- --watch
 
 npm run dev
 ```
 
+## Deployment
+
+```shell
+npm ci
+
+npm run build
+
+rsync -av --delete out/ /path/to/
+```
