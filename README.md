@@ -4,18 +4,31 @@
 
 ![](docs/screenshot_monitor.jpg)
 
-
-## Development
+## Development Environment
 
 - Node 18
 - npm 8
 - (Recommended) nvm: <https://github.com/nvm-sh/nvm>
 
+## Run the development server
+
 ```shell
 nvm use
 
 npm ci
+```
 
+Create `.env.local` file.
+
+```env
+NEXT_PUBLIC_HASURA_URL=https://hasura.example.com
+HASURA_ADMIN_SECRET=myadminsecretkey
+
+NEXT_PUBLIC_SMOKEPING_URL=https://smoke.example.com
+NEXT_PUBLIC_SMOKEPING_TARGET=MyGroup.MyTarget
+```
+
+```shell
 npm run codegen -- --watch
 
 npm run dev
