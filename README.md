@@ -1,6 +1,6 @@
 # harmonica-web-next
 
-自宅センサーモニターHarmonicaのNext.js製Webフロントエンドアプリ。
+自宅センサモニターHarmonicaのNext.js製Webフロントエンドアプリ。
 
 ![](docs/screenshot_monitor.jpg)
 
