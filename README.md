@@ -9,6 +9,7 @@
 
 - Node 18
 - npm 8
+- (Recommended) nvm: <https://github.com/nvm-sh/nvm>
 
 ```shell
 nvm use
