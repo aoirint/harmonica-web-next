@@ -2,6 +2,8 @@
 
 自宅センサーモニターHarmonicaのNext.js製Webフロントエンドアプリ。
 
+![](docs/screenshot_monitor.jpg)
+
 
 ## Development
 
