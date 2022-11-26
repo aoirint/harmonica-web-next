@@ -24,6 +24,8 @@ npm run dev
 ## Deployment
 
 ```shell
+nvm use
+
 npm ci
 
 npm run build
