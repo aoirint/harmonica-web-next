@@ -36,13 +36,20 @@ export default function HomePage() {
     }
   })
 
-  // Refresh every 1 minute
+  // Refresh data every 1 minute
+  // Reload page every 60 minutes
   useEffect(() => {
-    const intervalId = setInterval(() => {
+    const refreshIntervalId = setInterval(() => {
       setCurrentTimestamp(dayjs().unix())
     }, 60 * 1000)
+
+    const reloadIntervalId = setInterval(() => {
+      location.reload()
+    }, 60 * 60 * 1000)
+
     return () => {
-      clearInterval(intervalId)
+      clearInterval(refreshIntervalId)
+      clearInterval(reloadIntervalId)
     }
   })
 
