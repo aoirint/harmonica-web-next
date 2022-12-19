@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { hasToken } from '../lib/auth'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { Box, Container, CssBaseline, Grid, Toolbar, Typography } from '@mui/material'
 import MainAppBar from '../lib/components/app_bar/main_app_bar'
@@ -15,7 +15,10 @@ import SmokePingChartImage from '../lib/components/smoke_ping_chart_image'
 
 export default function HomePage() {
   const router = useRouter()
-  const nowDayjs = dayjs().tz()
+
+  const [currentTimestamp, setCurrentTimestamp] = useState(dayjs().unix())
+
+  const nowDayjs = dayjs.unix(currentTimestamp).tz()
   const startDayjs = nowDayjs.subtract(6, 'hour')
 
   const { data } = useGetMonitorQuery({
@@ -30,6 +33,16 @@ export default function HomePage() {
   useEffect(() => {
     if (! hasToken()) {
       router.push('/login')
+    }
+  })
+
+  // Refresh every 1 minute
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTimestamp(dayjs().unix())
+    }, 60 * 1000)
+    return () => {
+      clearInterval(intervalId)
     }
   })
 
