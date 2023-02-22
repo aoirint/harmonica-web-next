@@ -17,11 +17,13 @@ import assert from 'assert'
 export default function HomePage() {
   const router = useRouter()
 
+  const smokePingNames = process.env.NEXT_PUBLIC_SMOKEPING_NAMES?.split(',') ?? []
   const smokePingUrls = process.env.NEXT_PUBLIC_SMOKEPING_URLS?.split(',') ?? []
   const smokePingTargets = process.env.NEXT_PUBLIC_SMOKEPING_TARGETS?.split(',') ?? []
   assert(smokePingUrls.length == smokePingTargets.length)
 
   const smokePingEntries = [...Array(smokePingUrls.length).keys()].map((index) => ({
+    name: smokePingNames[index],
     url: smokePingUrls[index],
     target: smokePingTargets[index],
   }));
@@ -96,7 +98,7 @@ export default function HomePage() {
             </Grid>
             {smokePingEntries.map((smokePing, index) => (
               <Grid item xs={12} md={4} key={index}>
-                <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Ping</Typography>
+                <Typography variant="h6" component="h2" sx={{ mb: 1 }}>{smokePing.name}</Typography>
                 <SmokePingChartImage
                   smokePingUrl={smokePing.url}
                   smokePingTarget={smokePing.target}

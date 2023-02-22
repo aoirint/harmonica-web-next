@@ -24,6 +24,7 @@ Create `.env.local` file.
 NEXT_PUBLIC_HASURA_URL=https://hasura.example.com
 HASURA_ADMIN_SECRET=myadminsecretkey
 
+NEXT_PUBLIC_SMOKEPING_NAMES=Ping MyTarget
 NEXT_PUBLIC_SMOKEPING_URLS=https://smokeping.example.com
 NEXT_PUBLIC_SMOKEPING_TARGETS=MyGroup.MyTarget
 ```
