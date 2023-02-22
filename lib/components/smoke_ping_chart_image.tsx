@@ -2,23 +2,16 @@ import { Box } from "@mui/material"
 import dayjs from "dayjs"
 
 interface SmokePingChartImageProps {
+  smokePingUrl: string
+  smokePingTarget: string
   timestampEpoch: number
 }
 
 export default function SmokePingChartImage({
+  smokePingUrl,
+  smokePingTarget,
   timestampEpoch
 }: SmokePingChartImageProps) {
-  const smokePingUrl = process.env.NEXT_PUBLIC_SMOKEPING_URL
-  const smokePingTarget = process.env.NEXT_PUBLIC_SMOKEPING_TARGET
-
-  if (smokePingUrl === undefined || smokePingTarget === undefined) {
-    return (
-      <Box>
-        SmokePing info undefined
-      </Box>
-    )
-  }
-
   const timestampDayjs = dayjs.unix(timestampEpoch).tz()
   const smokePingCgiStart = timestampDayjs.subtract(3, 'hour').format('YYYY-MM-DD HH:mm')
   const smokePingCgiEnd = timestampDayjs.format('YYYY-MM-DD HH:mm')
