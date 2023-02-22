@@ -22,11 +22,11 @@ export default function HomePage() {
   const smokePingTargets = process.env.NEXT_PUBLIC_SMOKEPING_TARGETS?.split(',') ?? []
   assert(smokePingUrls.length == smokePingTargets.length)
 
-  const smokePingEntries = [...Array(smokePingUrls.length).keys()].map((index) => ({
+  const smokePingEntries = Array.from(Array(smokePingUrls.length).keys()).map((index) => ({
     name: smokePingNames[index],
     url: smokePingUrls[index],
     target: smokePingTargets[index],
-  }));
+  }))
 
   const [currentTimestamp, setCurrentTimestamp] = useState(dayjs().unix())
 
