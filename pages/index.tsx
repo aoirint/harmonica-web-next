@@ -12,9 +12,19 @@ import TemperatureChart from '../lib/components/chart/temperature_chart'
 import LightChart from '../lib/components/chart/light_chart'
 import HumidityChart from '../lib/components/chart/humidity_chart'
 import SmokePingChartImage from '../lib/components/smoke_ping_chart_image'
+import assert from 'assert'
 
 export default function HomePage() {
   const router = useRouter()
+
+  const smokePingUrls = process.env.NEXT_PUBLIC_SMOKEPING_URLS?.split(',') ?? []
+  const smokePingTargets = process.env.NEXT_PUBLIC_SMOKEPING_TARGETS?.split(',') ?? []
+  assert(smokePingUrls.length == smokePingTargets.length)
+
+  const smokePingEntries = [...Array(smokePingUrls.length).keys()].map((index) => ({
+    url: smokePingUrls[index],
+    target: smokePingTargets[index],
+  }));
 
   const [currentTimestamp, setCurrentTimestamp] = useState(dayjs().unix())
 
@@ -84,10 +94,16 @@ export default function HomePage() {
               <Typography variant="h6" component="h2" sx={{ mb: 1 }}>CO2 / ppm</Typography>
               <Co2Chart co2Data={data?.mhz19Co2 ?? []} />
             </Grid>
-            <Grid item xs={12} md={6}>
-              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Ping</Typography>
-              <SmokePingChartImage timestampEpoch={nowDayjs.unix()} />
-            </Grid>
+            {smokePingEntries.map((smokePing, index) => (
+              <Grid item xs={12} md={4} key={index}>
+                <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Ping</Typography>
+                <SmokePingChartImage
+                  smokePingUrl={smokePing.url}
+                  smokePingTarget={smokePing.target}
+                  timestampEpoch={nowDayjs.unix()}
+                />
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </Box>
