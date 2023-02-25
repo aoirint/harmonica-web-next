@@ -39,7 +39,8 @@ export default function HomePage() {
         _gte: startDayjs.format(),
         _lt: nowDayjs.format()
       }
-    }
+    },
+    fetchPolicy: 'no-cache'
   })
 
   useEffect(() => {
