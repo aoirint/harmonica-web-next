@@ -13,6 +13,7 @@ import LightChart from '../lib/components/chart/light_chart'
 import HumidityChart from '../lib/components/chart/humidity_chart'
 import SmokePingChartImage from '../lib/components/smoke_ping_chart_image'
 import assert from 'assert'
+import TrafficChart from '../lib/components/chart/traffic_chart'
 
 export default function HomePage() {
   const router = useRouter()
@@ -85,13 +86,17 @@ export default function HomePage() {
               <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Light / %</Typography>
               <LightChart lightData={data?.light ?? []} />
             </Grid>
-            <Grid item xs={12} md={4}>
+            {/* <Grid item xs={12} md={4}>
               <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Humidity / %</Typography>
               <HumidityChart humidityData={data?.humidity ?? []} />
-            </Grid>
+            </Grid> */}
             <Grid item xs={12} md={4}>
               <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Temperature / ℃</Typography>
               <TemperatureChart temperatureData={data?.temperature ?? []} />
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Traffic / bytes</Typography>
+              <TrafficChart trafficData={data?.l12TrafficDaily ?? []} />
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography variant="h6" component="h2" sx={{ mb: 1 }}>CO2 / ppm</Typography>

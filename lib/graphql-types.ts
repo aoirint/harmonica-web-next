@@ -505,7 +505,7 @@ export type GetMonitorQueryVariables = Exact<{
 }>;
 
 
-export type GetMonitorQuery = { __typename?: 'query_root', light: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, temperature: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, humidity: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, mhz19Co2: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }> };
+export type GetMonitorQuery = { __typename?: 'query_root', light: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, temperature: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, humidity: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, l12TrafficDaily: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, mhz19Co2: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }> };
 
 
 export const GetMonitorDocument = gql`
@@ -527,6 +527,13 @@ export const GetMonitorDocument = gql`
   humidity: SensorValue(
     order_by: {timestamp: asc}
     where: {key: {_eq: "humidity"}, timestamp: $timestampComp}
+  ) {
+    value
+    timestamp
+  }
+  l12TrafficDaily: SensorValue(
+    order_by: {timestamp: asc}
+    where: {key: {_eq: "l12_traffic_daily"}, timestamp: $timestampComp}
   ) {
     value
     timestamp

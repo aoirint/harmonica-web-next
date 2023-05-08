@@ -25,6 +25,14 @@ query getMonitor(
     timestamp
   }
 
+  l12TrafficDaily: SensorValue(
+    order_by: { timestamp: asc }
+    where: { key: { _eq: "l12_traffic_daily" }, timestamp: $timestampComp }
+  ) {
+    value
+    timestamp
+  }
+
   mhz19Co2: SensorValue(
     order_by: { timestamp: asc }
     where: { key: { _eq: "mhz19_co2" }, timestamp: $timestampComp }
