@@ -95,12 +95,12 @@ export default function HomePage() {
               <TemperatureChart temperatureData={data?.temperature ?? []} />
             </Grid>
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Traffic / bytes</Typography>
-              <TrafficChart trafficData={data?.l12TrafficDaily ?? []} />
-            </Grid>
-            <Grid item xs={12} md={4}>
               <Typography variant="h6" component="h2" sx={{ mb: 1 }}>CO2 / ppm</Typography>
               <Co2Chart co2Data={data?.mhz19Co2 ?? []} />
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Traffic / bytes</Typography>
+              <TrafficChart trafficData={data?.l12TrafficDaily ?? []} />
             </Grid>
             {smokePingEntries.map((smokePing, index) => (
               <Grid item xs={12} md={4} key={index}>
