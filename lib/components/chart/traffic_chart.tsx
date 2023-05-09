@@ -21,7 +21,7 @@ export default function TrafficChart({
       {
         label: 'Traffic',
         yAxisID: 'traffic',
-        data: trafficData.map((point) => point.value),
+        data: trafficData.map((point) => point.value / (1024 * 1024 * 1024)),
         fill: false,
         tension: 0
       }
@@ -49,7 +49,7 @@ export default function TrafficChart({
       traffic: {
         position: 'left',
         suggestedMin: 0,
-        suggestedMax: 20 * 1000 * 1000 * 1000
+        suggestedMax: 20
       }
     }
   }

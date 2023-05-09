@@ -99,7 +99,7 @@ export default function HomePage() {
               <Co2Chart co2Data={data?.mhz19Co2 ?? []} />
             </Grid>
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Traffic / bytes</Typography>
+              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Traffic / GiB</Typography>
               <TrafficChart trafficData={data?.l12TrafficDaily ?? []} />
             </Grid>
             {smokePingEntries.map((smokePing, index) => (
