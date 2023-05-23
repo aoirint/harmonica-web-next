@@ -29,9 +29,10 @@ export default function HomePage() {
   }))
 
   const [currentTimestamp, setCurrentTimestamp] = useState(dayjs().unix())
+  const [durationSeconds, setDurationSeconds] = useState(6 * 3600)
 
   const nowDayjs = dayjs.unix(currentTimestamp).tz()
-  const startDayjs = nowDayjs.subtract(6, 'hour')
+  const startDayjs = nowDayjs.subtract(durationSeconds, 'second')
 
   const { data } = useGetMonitorQuery({
     variables: {
@@ -75,7 +76,11 @@ export default function HomePage() {
       </Head>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <MainAppBar />
+        <MainAppBar
+          onDurationChanged={(duration) => {
+            setDurationSeconds(duration)
+          }}
+        />
         {/* <MainDrawer /> */}
         <Container component="main" maxWidth={false} sx={{ mt: 3, flexGrow: 1 }}>
           <Toolbar />
@@ -103,7 +108,8 @@ export default function HomePage() {
                 <SmokePingChartImage
                   smokePingUrl={smokePing.url}
                   smokePingTarget={smokePing.target}
-                  timestampEpoch={nowDayjs.unix()}
+                  timestampStartEpoch={startDayjs.unix()}
+                  timestampEndEpoch={nowDayjs.unix()}
                 />
               </Grid>
             ))}

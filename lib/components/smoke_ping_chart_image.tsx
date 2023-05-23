@@ -4,17 +4,21 @@ import dayjs from "dayjs"
 interface SmokePingChartImageProps {
   smokePingUrl: string
   smokePingTarget: string
-  timestampEpoch: number
+  timestampStartEpoch: number
+  timestampEndEpoch: number
 }
 
 export default function SmokePingChartImage({
   smokePingUrl,
   smokePingTarget,
-  timestampEpoch
+  timestampStartEpoch,
+  timestampEndEpoch
 }: SmokePingChartImageProps) {
-  const timestampDayjs = dayjs.unix(timestampEpoch).tz()
-  const smokePingCgiStart = timestampDayjs.subtract(3, 'hour').format('YYYY-MM-DD HH:mm')
-  const smokePingCgiEnd = timestampDayjs.format('YYYY-MM-DD HH:mm')
+  const timestampStartDayjs = dayjs.unix(timestampStartEpoch).tz()
+  const timestampEndDayjs = dayjs.unix(timestampEndEpoch).tz()
+  const smokePingCgiStart = timestampStartDayjs.format('YYYY-MM-DD HH:mm')
+  const smokePingCgiEnd = timestampEndDayjs.format('YYYY-MM-DD HH:mm')
+
   const smokePingImageUrl = new URL('/smokeping/smokeping.cgi', smokePingUrl)
   smokePingImageUrl.search = `displaymode=a;start=${smokePingCgiStart};end=${smokePingCgiEnd};target=${smokePingTarget}`
 
