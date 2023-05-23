@@ -108,7 +108,8 @@ export default function HomePage() {
                 <SmokePingChartImage
                   smokePingUrl={smokePing.url}
                   smokePingTarget={smokePing.target}
-                  timestampEpoch={nowDayjs.unix()}
+                  timestampStartEpoch={startDayjs.unix()}
+                  timestampEndEpoch={nowDayjs.unix()}
                 />
               </Grid>
             ))}
