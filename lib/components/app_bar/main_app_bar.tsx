@@ -1,8 +1,15 @@
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material'
 // import MenuIcon from '@mui/icons-material/Menu'
 import AccountMenuIcon from './account_menu_icon'
+import ConfigMenuIcon from './config_menu_icon'
 
-export default function MainAppBar() {
+interface MainAppBarProps {
+  onDurationChanged: (duration: number) => void
+}
+
+export default function MainAppBar({
+  onDurationChanged
+}: MainAppBarProps) {
   return (
     <AppBar component="nav" position="fixed" sx={{ zIndex: 9999 }}>
       <Toolbar>
@@ -24,6 +31,9 @@ export default function MainAppBar() {
           </Button>
         </Box> */}
         <AccountMenuIcon />
+        <ConfigMenuIcon
+          onDurationChanged={onDurationChanged}
+        />
       </Toolbar>
     </AppBar>
   )
