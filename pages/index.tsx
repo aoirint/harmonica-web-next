@@ -122,7 +122,7 @@ export default function HomePage() {
               <HumidityChart humidityData={calibratedData?.humidity ?? []} />
             </Grid> */}
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Temperature / {lastTemperatureValue} ℃, {lastHumidityValue} %</Typography>
+              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Temperature / {lastTemperatureValue?.toFixed(1)} ℃, {lastHumidityValue?.toFixed(0)} %</Typography>
               <TemperatureChart temperatureData={calibratedData?.temperature ?? []} />
             </Grid>
             <Grid item xs={12} md={4}>
