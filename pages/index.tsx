@@ -68,6 +68,9 @@ export default function HomePage() {
   const temperatureDataCount = calibratedData?.temperature?.length ?? 0
   const lastTemperatureValue = temperatureDataCount > 0 ? calibratedData?.temperature?.[temperatureDataCount - 1]?.value : undefined
 
+  const humidityDataCount = calibratedData?.humidity?.length ?? 0
+  const lastHumidityValue = humidityDataCount > 0 ? calibratedData?.humidity?.[humidityDataCount - 1]?.value : undefined
+
   useEffect(() => {
     if (! hasToken()) {
       router.push('/login')
@@ -119,7 +122,7 @@ export default function HomePage() {
               <HumidityChart humidityData={calibratedData?.humidity ?? []} />
             </Grid> */}
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Temperature / {lastTemperatureValue} ℃</Typography>
+              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Temperature / {lastTemperatureValue} ℃, {lastHumidityValue} %</Typography>
               <TemperatureChart temperatureData={calibratedData?.temperature ?? []} />
             </Grid>
             <Grid item xs={12} md={4}>
