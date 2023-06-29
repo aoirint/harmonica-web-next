@@ -29,6 +29,9 @@ export default function HomePage() {
     target: smokePingTargets[index],
   }))
 
+  const temperatureOffsetString = process.env.NEXT_PUBLIC_TEMPERATURE_OFFSET ?? "0.0"
+  const temperatureOffset = parseFloat(temperatureOffsetString)
+
   const [currentTimestamp, setCurrentTimestamp] = useState(dayjs().unix())
   const [durationSeconds, setDurationSeconds] = useState(6 * 3600)
 
@@ -44,6 +47,17 @@ export default function HomePage() {
     },
     fetchPolicy: 'no-cache'
   })
+
+  const calibratedData = {
+    light: data?.light,
+    temperature: data?.temperature?.map((temperature) => ({
+      timestamp: temperature.timestamp,
+      value: temperature.value + temperatureOffset,
+    })),
+    humidity: data?.humidity,
+    mhz19Co2: data?.mhz19Co2,
+    l12TrafficDaily: data?.l12TrafficDaily,
+  }
 
   useEffect(() => {
     if (! hasToken()) {
@@ -89,23 +103,23 @@ export default function HomePage() {
           <Grid container spacing={2}>
             <Grid item xs={12} md={4}>
               <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Light / %</Typography>
-              <LightChart lightData={data?.light ?? []} />
+              <LightChart lightData={calibratedData?.light ?? []} />
             </Grid>
             {/* <Grid item xs={12} md={4}>
               <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Humidity / %</Typography>
-              <HumidityChart humidityData={data?.humidity ?? []} />
+              <HumidityChart humidityData={calibratedData?.humidity ?? []} />
             </Grid> */}
             <Grid item xs={12} md={4}>
               <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Temperature / ℃</Typography>
-              <TemperatureChart temperatureData={data?.temperature ?? []} />
+              <TemperatureChart temperatureData={calibratedData?.temperature ?? []} />
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography variant="h6" component="h2" sx={{ mb: 1 }}>CO2 / ppm</Typography>
-              <Co2Chart co2Data={data?.mhz19Co2 ?? []} />
+              <Co2Chart co2Data={calibratedData?.mhz19Co2 ?? []} />
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Traffic / GiB</Typography>
-              <TrafficChart trafficData={data?.l12TrafficDaily ?? []} />
+              <TrafficChart trafficData={calibratedData?.l12TrafficDaily ?? []} />
             </Grid>
             {smokePingEntries.map((smokePing, index) => (
               <Grid item xs={12} md={4} key={index}>
