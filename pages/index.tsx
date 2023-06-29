@@ -59,6 +59,9 @@ export default function HomePage() {
     l12TrafficDaily: data?.l12TrafficDaily,
   }
 
+  const temperatureDataCount = calibratedData?.temperature?.length ?? 0
+  const lastTemperatureValue = temperatureDataCount > 0 ? calibratedData?.temperature?.[temperatureDataCount - 1]?.value : undefined
+
   useEffect(() => {
     if (! hasToken()) {
       router.push('/login')
@@ -110,7 +113,7 @@ export default function HomePage() {
               <HumidityChart humidityData={calibratedData?.humidity ?? []} />
             </Grid> */}
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Temperature / ℃</Typography>
+              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Temperature / {lastTemperatureValue} ℃</Typography>
               <TemperatureChart temperatureData={calibratedData?.temperature ?? []} />
             </Grid>
             <Grid item xs={12} md={4}>
