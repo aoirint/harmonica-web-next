@@ -32,6 +32,9 @@ export default function HomePage() {
   const temperatureOffsetString = process.env.NEXT_PUBLIC_TEMPERATURE_OFFSET ?? "0.0"
   const temperatureOffset = parseFloat(temperatureOffsetString)
 
+  const humidityOffsetString = process.env.NEXT_PUBLIC_HUMIDITY_OFFSET ?? "0.0"
+  const humidityOffset = parseFloat(humidityOffsetString)
+
   const [currentTimestamp, setCurrentTimestamp] = useState(dayjs().unix())
   const [durationSeconds, setDurationSeconds] = useState(6 * 3600)
 
@@ -54,7 +57,10 @@ export default function HomePage() {
       timestamp: temperature.timestamp,
       value: temperature.value + temperatureOffset,
     })),
-    humidity: data?.humidity,
+    humidity: data?.humidity?.map((humidity) => ({
+      timestamp: humidity.timestamp,
+      value: humidity.value + humidityOffset,
+    })),
     mhz19Co2: data?.mhz19Co2,
     l12TrafficDaily: data?.l12TrafficDaily,
   }
