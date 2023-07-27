@@ -117,22 +117,22 @@ export default function HomePage() {
               <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Light / %</Typography>
               <LightChart lightData={calibratedData?.light ?? []} />
             </Grid>
-            {/* <Grid item xs={12} md={4}>
-              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Humidity / %</Typography>
-              <HumidityChart humidityData={calibratedData?.humidity ?? []} />
-            </Grid> */}
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Temperature / {lastTemperatureValue?.toFixed(1)} ℃, {lastHumidityValue?.toFixed(0)} %</Typography>
+              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Humidity / {lastHumidityValue?.toFixed(0)} %</Typography>
+              <HumidityChart humidityData={calibratedData?.humidity ?? []} />
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Temperature / {lastTemperatureValue?.toFixed(1)} ℃</Typography>
               <TemperatureChart temperatureData={calibratedData?.temperature ?? []} />
             </Grid>
             <Grid item xs={12} md={4}>
               <Typography variant="h6" component="h2" sx={{ mb: 1 }}>CO2 / ppm</Typography>
               <Co2Chart co2Data={calibratedData?.mhz19Co2 ?? []} />
             </Grid>
-            <Grid item xs={12} md={4}>
+            {/* <Grid item xs={12} md={4}>
               <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Traffic / GiB</Typography>
               <TrafficChart trafficData={calibratedData?.l12TrafficDaily ?? []} />
-            </Grid>
+            </Grid> */}
             {smokePingEntries.map((smokePing, index) => (
               <Grid item xs={12} md={4} key={index}>
                 <Typography variant="h6" component="h2" sx={{ mb: 1 }}>{smokePing.name}</Typography>
