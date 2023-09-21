@@ -27,7 +27,7 @@
     "dayjs": "^1.11.6",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
-    "graphql": "^16.6.0",
+    "graphql": "^16.8.1",
     "luxon": "^3.2.1",
     "moment": "^2.29.4",
     "next": "13.0.5",
