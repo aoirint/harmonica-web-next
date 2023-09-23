@@ -6,8 +6,8 @@
 
 ## Development Environment
 
-- Node 18
-- npm 8
+- Node 20
+- npm 10
 - (Recommended) nvm: <https://github.com/nvm-sh/nvm>
 
 ## Run the development server
