@@ -78,11 +78,17 @@ export default function HomePage() {
     l12TrafficDaily: data?.l12TrafficDaily,
   }
 
+  const lightDataCount = calibratedData?.light?.length ?? 0
+  const lastLightValue = lightDataCount > 0 ? calibratedData?.light?.[lightDataCount - 1]?.value : undefined
+
   const temperatureDataCount = calibratedData?.temperature?.length ?? 0
   const lastTemperatureValue = temperatureDataCount > 0 ? calibratedData?.temperature?.[temperatureDataCount - 1]?.value : undefined
 
   const humidityDataCount = calibratedData?.humidity?.length ?? 0
   const lastHumidityValue = humidityDataCount > 0 ? calibratedData?.humidity?.[humidityDataCount - 1]?.value : undefined
+
+  const co2DataCount = calibratedData?.mhz19Co2?.length ?? 0
+  const lastCo2Value = co2DataCount > 0 ? calibratedData?.mhz19Co2?.[co2DataCount - 1]?.value : undefined
 
   useEffect(() => {
     if (! hasToken()) {
@@ -127,7 +133,7 @@ export default function HomePage() {
 
           <Grid container spacing={2}>
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Light / %</Typography>
+              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Light / {lastLightValue?.toFixed(0)} %</Typography>
               <LightChart lightData={calibratedData?.light ?? []} />
             </Grid>
             <Grid item xs={12} md={4}>
@@ -139,7 +145,7 @@ export default function HomePage() {
               <TemperatureChart temperatureData={calibratedData?.temperature ?? []} />
             </Grid>
             <Grid item xs={12} md={4}>
-              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>CO2 / ppm</Typography>
+              <Typography variant="h6" component="h2" sx={{ mb: 1 }}>CO2 / {lastCo2Value?.toFixed(0)} ppm</Typography>
               <Co2Chart co2Data={calibratedData?.mhz19Co2 ?? []} />
             </Grid>
             {/* <Grid item xs={12} md={4}>
