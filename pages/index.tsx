@@ -40,16 +40,26 @@ export default function HomePage() {
 
   const nowDayjs = dayjs.unix(currentTimestamp).tz()
   const startDayjs = nowDayjs.subtract(durationSeconds, 'second')
+  const weekAgoDayjs = nowDayjs.subtract(1, 'week')
 
   const { data } = useGetMonitorQuery({
     variables: {
       timestampComp: {
         _gte: startDayjs.format(),
         _lt: nowDayjs.format()
+      },
+      timestampWeekComp: {
+        _gte: weekAgoDayjs.format(),
+        _lt: nowDayjs.format()
       }
     },
     fetchPolicy: 'no-cache'
   })
+
+  const minimumCo2ValueInWeek = data?.mhz19Co2Aggregate?.aggregate?.min?.value ?? 0
+
+  // 7日間の最小値を400ppmとみなす
+  const co2Offset = 400 - minimumCo2ValueInWeek
 
   const calibratedData = {
     light: data?.light,
@@ -61,7 +71,10 @@ export default function HomePage() {
       timestamp: humidity.timestamp,
       value: humidity.value + humidityOffset,
     })),
-    mhz19Co2: data?.mhz19Co2,
+    mhz19Co2: data?.mhz19Co2?.map((mhz19Co2) => ({
+      timestamp: mhz19Co2.timestamp,
+      value: mhz19Co2.value + co2Offset,
+    })),
     l12TrafficDaily: data?.l12TrafficDaily,
   }
 
