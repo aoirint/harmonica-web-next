@@ -68,6 +68,16 @@ export default function ConfigMenuIcon({
         }}>
           24h
         </MenuItem>
+        <MenuItem onClick={() => {
+          onDurationChanged(3 * 24 * 3600)
+        }}>
+          3d
+        </MenuItem>
+        <MenuItem onClick={() => {
+          onDurationChanged(7 * 24 * 3600)
+        }}>
+          7d
+        </MenuItem>
       </Menu>
     </Box>    
   )
