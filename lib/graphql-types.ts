@@ -241,6 +241,7 @@ export type SensorValue_Updates = {
   _inc?: InputMaybe<SensorValue_Inc_Input>;
   /** sets the columns of the filtered rows to the given values */
   _set?: InputMaybe<SensorValue_Set_Input>;
+  /** filter the rows which have to be updated */
   where: SensorValue_Bool_Exp;
 };
 
@@ -502,14 +503,15 @@ export type Uuid_Comparison_Exp = {
 
 export type GetMonitorQueryVariables = Exact<{
   timestampComp: Timestamptz_Comparison_Exp;
+  timestampWeekComp: Timestamptz_Comparison_Exp;
 }>;
 
 
-export type GetMonitorQuery = { __typename?: 'query_root', light: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, temperature: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, humidity: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, l12TrafficDaily: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, mhz19Co2: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }> };
+export type GetMonitorQuery = { __typename?: 'query_root', light: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, temperature: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, humidity: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, l12TrafficDaily: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, mhz19Co2: Array<{ __typename?: 'SensorValue', value: any, timestamp: any }>, mhz19Co2Aggregate: { __typename?: 'SensorValue_aggregate', aggregate?: { __typename?: 'SensorValue_aggregate_fields', min?: { __typename?: 'SensorValue_min_fields', value?: any | null, timestamp?: any | null } | null } | null } };
 
 
 export const GetMonitorDocument = gql`
-    query getMonitor($timestampComp: timestamptz_comparison_exp!) {
+    query getMonitor($timestampComp: timestamptz_comparison_exp!, $timestampWeekComp: timestamptz_comparison_exp!) {
   light: SensorValue(
     order_by: {timestamp: asc}
     where: {key: {_eq: "light"}, timestamp: $timestampComp}
@@ -545,6 +547,16 @@ export const GetMonitorDocument = gql`
     value
     timestamp
   }
+  mhz19Co2Aggregate: SensorValue_aggregate(
+    where: {key: {_eq: "mhz19_co2"}, timestamp: $timestampWeekComp}
+  ) {
+    aggregate {
+      min {
+        value
+        timestamp
+      }
+    }
+  }
 }
     `;
 
@@ -561,6 +573,7 @@ export const GetMonitorDocument = gql`
  * const { data, loading, error } = useGetMonitorQuery({
  *   variables: {
  *      timestampComp: // value for 'timestampComp'
+ *      timestampWeekComp: // value for 'timestampWeekComp'
  *   },
  * });
  */

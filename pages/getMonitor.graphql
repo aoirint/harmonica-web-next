@@ -1,5 +1,6 @@
 query getMonitor(
   $timestampComp: timestamptz_comparison_exp!
+  $timestampWeekComp: timestamptz_comparison_exp!
 ) {
   light: SensorValue(
     order_by: { timestamp: asc }
@@ -39,5 +40,16 @@ query getMonitor(
   ) {
     value
     timestamp
+  }
+
+  mhz19Co2Aggregate: SensorValue_aggregate(
+    where: { key: { _eq: "mhz19_co2" }, timestamp: $timestampWeekComp }
+  ) {
+    aggregate {
+      min {
+        value
+        timestamp
+      }
+    }
   }
 }
