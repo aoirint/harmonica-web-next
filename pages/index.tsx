@@ -92,7 +92,7 @@ export default function HomePage() {
 
   useEffect(() => {
     if (! hasToken()) {
-      router.push('/login/')
+      router.push('/login')
     }
   })
 
