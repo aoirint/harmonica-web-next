@@ -6,16 +6,13 @@
 
 ## Development Environment
 
-- Node 20
-- npm 10
-- (Recommended) nvm: <https://github.com/nvm-sh/nvm>
+- Node 22
+- pnpm 10
 
 ## Run the development server
 
 ```shell
-nvm use
-
-npm ci
+pnpm install --frozen-lockfile
 ```
 
 Create `.env.local` file.
@@ -30,19 +27,17 @@ NEXT_PUBLIC_SMOKEPING_TARGETS=MyGroup.MyTarget
 ```
 
 ```shell
-npm run codegen -- --watch
+pnpm run codegen -- --watch
 
-npm run dev
+pnpm run dev
 ```
 
 ## Deployment
 
 ```shell
-nvm use
+pnpm install --frozen-lockfile
 
-npm ci
-
-npm run build
+pnpm run build
 
 rsync -av --delete out/ /path/to/
 ```
