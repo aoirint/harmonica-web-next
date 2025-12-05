@@ -1,3 +1,4 @@
+import assert from "node:assert"
 import {
   Box,
   Container,
@@ -6,7 +7,6 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material"
-import assert from "assert"
 import dayjs from "dayjs"
 import Head from "next/head"
 import { useRouter } from "next/router"
@@ -28,7 +28,7 @@ export default function HomePage() {
   const smokePingUrls = process.env.NEXT_PUBLIC_SMOKEPING_URLS?.split(",") ?? []
   const smokePingTargets =
     process.env.NEXT_PUBLIC_SMOKEPING_TARGETS?.split(",") ?? []
-  assert(smokePingUrls.length == smokePingTargets.length)
+  assert(smokePingUrls.length === smokePingTargets.length)
 
   const smokePingEntries = Array.from(Array(smokePingUrls.length).keys()).map(
     (index) => ({

@@ -11,9 +11,9 @@ interface ConfigMenuIconProps {
 export default function ConfigMenuIcon({
   onDurationChanged,
 }: ConfigMenuIconProps) {
-  const apolloClient = useApolloClient()
+  const _apolloClient = useApolloClient()
 
-  const router = useRouter()
+  const _router = useRouter()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>): void => {

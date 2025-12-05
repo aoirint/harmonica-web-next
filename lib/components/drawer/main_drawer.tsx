@@ -17,7 +17,7 @@ export default function MainDrawer() {
       sx={{
         width: drawerWidth,
         flexShrink: 0,
-        [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: "border-box" },
+        "& .MuiDrawer-paper": { width: drawerWidth, boxSizing: "border-box" },
       }}
     >
       <Toolbar />
