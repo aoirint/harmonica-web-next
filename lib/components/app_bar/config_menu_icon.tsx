@@ -1,7 +1,5 @@
-import { useApolloClient } from "@apollo/client"
 import SettingsIcon from "@mui/icons-material/Settings"
 import { Box, IconButton, Menu, MenuItem } from "@mui/material"
-import { useRouter } from "next/router"
 import { useState } from "react"
 
 interface ConfigMenuIconProps {
@@ -11,9 +9,6 @@ interface ConfigMenuIconProps {
 export default function ConfigMenuIcon({
   onDurationChanged,
 }: ConfigMenuIconProps) {
-  const _apolloClient = useApolloClient()
-
-  const _router = useRouter()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>): void => {
