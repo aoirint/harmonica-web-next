@@ -10,7 +10,7 @@
     "codegen": "graphql-codegen --require dotenv/config --config codegen.ts dotenv_config_path=.env.local"
   },
   "engines": {
-    "node": "22.x"
+    "node": "24.x"
   },
   "packageManager": "pnpm@10.24.0",
   "dependencies": {
