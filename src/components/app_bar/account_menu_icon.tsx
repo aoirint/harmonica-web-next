@@ -1,9 +1,9 @@
 import { useApolloClient } from "@apollo/client"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import { Box, IconButton, Menu, MenuItem } from "@mui/material"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { setToken } from "../../auth"
+import { setToken } from "../../lib/auth"
 
 export default function AccountMenuIcon() {
   const apolloClient = useApolloClient()

@@ -9,10 +9,10 @@ const config: CodegenConfig = {
       },
     },
   },
-  documents: "pages/**/*.graphql",
+  documents: "src/**/*.graphql",
   ignoreNoDocuments: true,
   generates: {
-    "./lib/graphql-types.ts": {
+    "./src/lib/graphql-types.ts": {
       plugins: [
         "typescript",
         "typescript-operations",
