@@ -25,4 +25,3 @@ Chart.defaults.borderColor = "#444c56"
 Chart.defaults.color = "#adbac7"
 
 export default Chart
-export type { ChartOptions } from "chart.js"

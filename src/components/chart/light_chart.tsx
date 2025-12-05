@@ -1,6 +1,8 @@
 import { Box } from "@mui/material"
+import "@/lib/chartjs"
+
+import type { ChartOptions } from "chart.js"
 import { type ChartProps, Line } from "react-chartjs-2"
-import type { ChartOptions } from "@/lib/chartjs"
 
 interface LightDataPoint {
   value: number
