@@ -1,9 +1,9 @@
-import { Box, IconButton, Menu, MenuItem } from '@mui/material'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle'
-import { setToken } from '../../auth'
-import { useState } from 'react'
-import { useRouter } from 'next/router'
-import { useApolloClient } from '@apollo/client'
+import { useApolloClient } from "@apollo/client"
+import AccountCircleIcon from "@mui/icons-material/AccountCircle"
+import { Box, IconButton, Menu, MenuItem } from "@mui/material"
+import { useRouter } from "next/router"
+import { useState } from "react"
+import { setToken } from "../../auth"
 
 export default function AccountMenuIcon() {
   const apolloClient = useApolloClient()
@@ -22,7 +22,7 @@ export default function AccountMenuIcon() {
   const handleLogout = (): void => {
     apolloClient.clearStore()
     setToken(null)
-    router.push('/login')
+    router.push("/login")
   }
 
   return (
@@ -41,20 +41,20 @@ export default function AccountMenuIcon() {
         id="menu-appbar"
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
+          vertical: "top",
+          horizontal: "right",
         }}
         keepMounted
         transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
+          vertical: "top",
+          horizontal: "right",
         }}
         open={Boolean(anchorEl)}
         onClose={handleClose}
-        sx={{ zIndex: 9999+1 }}
+        sx={{ zIndex: 9999 + 1 }}
       >
         <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
-    </Box>    
+    </Box>
   )
 }
