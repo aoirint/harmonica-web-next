@@ -8,6 +8,7 @@ import {
   TimeScale,
   Tooltip,
 } from "chart.js"
+import "chartjs-adapter-luxon"
 
 // Setup Chart.js
 Chart.register(
