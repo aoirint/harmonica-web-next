@@ -1,6 +1,6 @@
 import { Box } from "@mui/material"
-import type { ChartOptions } from "chart.js"
 import { type ChartProps, Line } from "react-chartjs-2"
+import type { ChartOptions } from "@/lib/chartjs"
 
 interface TrafficDataPoint {
   value: number

@@ -7,7 +7,6 @@ import {
   InMemoryCache,
 } from "@apollo/client"
 import { setContext } from "@apollo/client/link/context"
-import "chartjs-adapter-luxon"
 
 import { type ReactNode, useMemo } from "react"
 import { getToken } from "../lib/auth"

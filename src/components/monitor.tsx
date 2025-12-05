@@ -9,17 +9,17 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material"
-import dayjs from "dayjs"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
-import { hasToken } from "../lib/auth"
+import dayjs from "@/lib/dayjs"
 import MainAppBar from "../components/app_bar/main_app_bar"
 import Co2Chart from "../components/chart/co2_chart"
 import HumidityChart from "../components/chart/humidity_chart"
 import LightChart from "../components/chart/light_chart"
 import TemperatureChart from "../components/chart/temperature_chart"
-import { useGetMonitorQuery } from "../lib/graphql-types"
 import SmokePingChartImage from "../components/smoke_ping_chart_image"
+import { hasToken } from "../lib/auth"
+import { useGetMonitorQuery } from "../lib/graphql-types"
 
 export default function Monitor() {
   const router = useRouter()
