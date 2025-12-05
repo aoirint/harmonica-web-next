@@ -1,7 +1,6 @@
-import { Box } from "@mui/material";
-
-import { Line, ChartProps } from 'react-chartjs-2'
-import { ChartOptions } from 'chart.js'
+import { Box } from "@mui/material"
+import type { ChartOptions } from "chart.js"
+import { type ChartProps, Line } from "react-chartjs-2"
 
 interface TrafficDataPoint {
   value: number
@@ -12,46 +11,44 @@ interface TrafficChartProps {
   trafficData: TrafficDataPoint[]
 }
 
-export default function TrafficChart({
-  trafficData: trafficData
-}: TrafficChartProps) {
-  const data: ChartProps<"line">['data'] = {
+export default function TrafficChart({ trafficData }: TrafficChartProps) {
+  const data: ChartProps<"line">["data"] = {
     labels: trafficData.map((point) => point.timestamp),
     datasets: [
       {
-        label: 'Traffic',
-        yAxisID: 'traffic',
+        label: "Traffic",
+        yAxisID: "traffic",
         data: trafficData.map((point) => point.value / (1024 * 1024 * 1024)),
         fill: false,
-        tension: 0
-      }
-    ]
+        tension: 0,
+      },
+    ],
   }
   const options: ChartOptions<"line"> = {
     plugins: {
       legend: {
-        display: false
-      }
+        display: false,
+      },
     },
     responsive: true,
     scales: {
       x: {
-        type: 'time',
+        type: "time",
         time: {
           displayFormats: {
-            hour: 'HH:mm'
-          }
+            hour: "HH:mm",
+          },
         },
         ticks: {
-          maxTicksLimit: 20
-        }
+          maxTicksLimit: 20,
+        },
       },
       traffic: {
-        position: 'left',
+        position: "left",
         suggestedMin: 0,
-        suggestedMax: 20
-      }
-    }
+        suggestedMax: 20,
+      },
+    },
   }
 
   return (

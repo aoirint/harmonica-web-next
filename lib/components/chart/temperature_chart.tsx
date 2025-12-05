@@ -1,7 +1,6 @@
-import { Box } from "@mui/material";
-
-import { Line, ChartProps } from 'react-chartjs-2'
-import { ChartOptions } from 'chart.js'
+import { Box } from "@mui/material"
+import type { ChartOptions } from "chart.js"
+import { type ChartProps, Line } from "react-chartjs-2"
 
 interface TemperatureDataPoint {
   value: number
@@ -13,45 +12,45 @@ interface TemperatureChartProps {
 }
 
 export default function TemperatureChart({
-  temperatureData
+  temperatureData,
 }: TemperatureChartProps) {
-  const data: ChartProps<"line">['data'] = {
+  const data: ChartProps<"line">["data"] = {
     labels: temperatureData.map((point) => point.timestamp),
     datasets: [
       {
-        label: 'Temperature',
-        yAxisID: 'temperature',
+        label: "Temperature",
+        yAxisID: "temperature",
         data: temperatureData.map((point) => point.value),
         fill: false,
-        tension: 0
-      }
-    ]
+        tension: 0,
+      },
+    ],
   }
   const options: ChartOptions<"line"> = {
     plugins: {
       legend: {
-        display: false
-      }
+        display: false,
+      },
     },
     responsive: true,
     scales: {
       x: {
-        type: 'time',
+        type: "time",
         time: {
           displayFormats: {
-            hour: 'HH:mm'
-          }
+            hour: "HH:mm",
+          },
         },
         ticks: {
-          maxTicksLimit: 20
-        }
+          maxTicksLimit: 20,
+        },
       },
       temperature: {
-        position: 'left',
+        position: "left",
         suggestedMin: 0,
-        suggestedMax: 40
-      }
-    }
+        suggestedMax: 40,
+      },
+    },
   }
 
   return (

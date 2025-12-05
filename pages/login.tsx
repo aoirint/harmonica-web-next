@@ -1,10 +1,10 @@
-import Head from 'next/head'
-import { hasToken, setToken } from '../lib/auth'
-import { useEffect } from 'react'
-import { useRouter } from 'next/router'
-import { useForm, Controller } from 'react-hook-form'
-import { Box, Button, Container, TextField } from '@mui/material'
-import AnonymousAppBar from '../lib/components/app_bar/anonymous_app_bar'
+import { Box, Button, Container, TextField } from "@mui/material"
+import Head from "next/head"
+import { useRouter } from "next/router"
+import { useEffect } from "react"
+import { Controller, useForm } from "react-hook-form"
+import { hasToken, setToken } from "../lib/auth"
+import AnonymousAppBar from "../lib/components/app_bar/anonymous_app_bar"
 
 interface LoginValues {
   token: string
@@ -14,18 +14,18 @@ export default function LoginPage() {
   const router = useRouter()
   const { control, handleSubmit } = useForm<LoginValues>({
     defaultValues: {
-      token: ''
-    }
+      token: "",
+    },
   })
 
   const onSubmit = (values: LoginValues): void => {
     setToken(values.token)
-    router.push('/')
+    router.push("/")
   }
 
   useEffect(() => {
     if (hasToken()) {
-      router.push('/')
+      router.push("/")
     }
   })
 
@@ -38,12 +38,16 @@ export default function LoginPage() {
       </Head>
       <AnonymousAppBar />
       <Container component="main" sx={{ mt: 3 }}>
-        <Box component="form" autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+        <Box
+          component="form"
+          autoComplete="off"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <Box>
             <Controller
               name="token"
               control={control}
-              render={({ field }) =>
+              render={({ field }) => (
                 <TextField
                   {...field}
                   label="JWT Token"
@@ -51,11 +55,11 @@ export default function LoginPage() {
                   fullWidth
                   required
                 />
-              }
+              )}
             />
           </Box>
           <Box sx={{ mt: 4 }}>
-            <Button variant="contained" type='submit'>
+            <Button variant="contained" type="submit">
               Login
             </Button>
           </Box>

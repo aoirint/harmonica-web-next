@@ -1,7 +1,6 @@
-import { Box } from "@mui/material";
-
-import { Line, ChartProps } from 'react-chartjs-2'
-import { ChartOptions } from 'chart.js'
+import { Box } from "@mui/material"
+import type { ChartOptions } from "chart.js"
+import { type ChartProps, Line } from "react-chartjs-2"
 
 interface Co2DataPoint {
   value: number
@@ -12,46 +11,44 @@ interface Co2ChartProps {
   co2Data: Co2DataPoint[]
 }
 
-export default function Co2Chart({
-  co2Data
-}: Co2ChartProps) {
-  const data: ChartProps<"line">['data'] = {
+export default function Co2Chart({ co2Data }: Co2ChartProps) {
+  const data: ChartProps<"line">["data"] = {
     labels: co2Data.map((point) => point.timestamp),
     datasets: [
       {
-        label: 'CO2',
-        yAxisID: 'co2',
+        label: "CO2",
+        yAxisID: "co2",
         data: co2Data.map((point) => point.value),
         fill: false,
-        tension: 0
-      }
-    ]
+        tension: 0,
+      },
+    ],
   }
   const options: ChartOptions<"line"> = {
     plugins: {
       legend: {
-        display: false
-      }
+        display: false,
+      },
     },
     responsive: true,
     scales: {
       x: {
-        type: 'time',
+        type: "time",
         time: {
           displayFormats: {
-            hour: 'HH:mm'
-          }
+            hour: "HH:mm",
+          },
         },
         ticks: {
-          maxTicksLimit: 20
-        }
+          maxTicksLimit: 20,
+        },
       },
       co2: {
-        position: 'left',
+        position: "left",
         suggestedMin: 200,
-        suggestedMax: 1400
-      }
-    }
+        suggestedMax: 1400,
+      },
+    },
   }
 
   return (
