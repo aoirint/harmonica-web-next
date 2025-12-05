@@ -8,4 +8,5 @@ savePrefix: ''
 minimumReleaseAge: 1440
 
 # Dependencies allowed to run install scripts
-onlyBuiltDependencies: []
+onlyBuiltDependencies:
+  - sharp

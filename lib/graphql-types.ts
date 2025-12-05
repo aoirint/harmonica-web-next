@@ -577,7 +577,7 @@ export const GetMonitorDocument = gql`
  *   },
  * });
  */
-export function useGetMonitorQuery(baseOptions: Apollo.QueryHookOptions<GetMonitorQuery, GetMonitorQueryVariables>) {
+export function useGetMonitorQuery(baseOptions: Apollo.QueryHookOptions<GetMonitorQuery, GetMonitorQueryVariables> & ({ variables: GetMonitorQueryVariables; skip?: boolean; } | { skip: boolean; }) ) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<GetMonitorQuery, GetMonitorQueryVariables>(GetMonitorDocument, options);
       }
@@ -585,6 +585,11 @@ export function useGetMonitorLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions
           const options = {...defaultOptions, ...baseOptions}
           return Apollo.useLazyQuery<GetMonitorQuery, GetMonitorQueryVariables>(GetMonitorDocument, options);
         }
+export function useGetMonitorSuspenseQuery(baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetMonitorQuery, GetMonitorQueryVariables>) {
+          const options = baseOptions === Apollo.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
+          return Apollo.useSuspenseQuery<GetMonitorQuery, GetMonitorQueryVariables>(GetMonitorDocument, options);
+        }
 export type GetMonitorQueryHookResult = ReturnType<typeof useGetMonitorQuery>;
 export type GetMonitorLazyQueryHookResult = ReturnType<typeof useGetMonitorLazyQuery>;
+export type GetMonitorSuspenseQueryHookResult = ReturnType<typeof useGetMonitorSuspenseQuery>;
 export type GetMonitorQueryResult = Apollo.QueryResult<GetMonitorQuery, GetMonitorQueryVariables>;
