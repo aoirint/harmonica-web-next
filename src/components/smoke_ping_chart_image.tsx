@@ -1,6 +1,6 @@
 import { Box } from "@mui/material"
-import dayjs from "dayjs"
 import Image from "next/image"
+import dayjs from "@/lib/dayjs"
 
 interface SmokePingChartImageProps {
   smokePingUrl: string

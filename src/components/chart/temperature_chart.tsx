@@ -1,24 +1,28 @@
 import { Box } from "@mui/material"
+import "@/lib/chartjs"
+
 import type { ChartOptions } from "chart.js"
 import { type ChartProps, Line } from "react-chartjs-2"
 
-interface TrafficDataPoint {
+interface TemperatureDataPoint {
   value: number
   timestamp: number
 }
 
-interface TrafficChartProps {
-  trafficData: TrafficDataPoint[]
+interface TemperatureChartProps {
+  temperatureData: TemperatureDataPoint[]
 }
 
-export default function TrafficChart({ trafficData }: TrafficChartProps) {
+export default function TemperatureChart({
+  temperatureData,
+}: TemperatureChartProps) {
   const data: ChartProps<"line">["data"] = {
-    labels: trafficData.map((point) => point.timestamp),
+    labels: temperatureData.map((point) => point.timestamp),
     datasets: [
       {
-        label: "Traffic",
-        yAxisID: "traffic",
-        data: trafficData.map((point) => point.value / (1024 * 1024 * 1024)),
+        label: "Temperature",
+        yAxisID: "temperature",
+        data: temperatureData.map((point) => point.value),
         fill: false,
         tension: 0,
       },
@@ -43,10 +47,10 @@ export default function TrafficChart({ trafficData }: TrafficChartProps) {
           maxTicksLimit: 20,
         },
       },
-      traffic: {
+      temperature: {
         position: "left",
         suggestedMin: 0,
-        suggestedMax: 20,
+        suggestedMax: 40,
       },
     },
   }

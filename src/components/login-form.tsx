@@ -1,16 +1,18 @@
+"use client"
+
 import { Box, Button, Container, TextField } from "@mui/material"
 import Head from "next/head"
-import { useRouter } from "next/router"
+import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import { Controller, useForm } from "react-hook-form"
 import { hasToken, setToken } from "../lib/auth"
-import AnonymousAppBar from "../lib/components/app_bar/anonymous_app_bar"
+import AnonymousAppBar from "./app_bar/anonymous_app_bar"
 
-interface LoginValues {
+export interface LoginValues {
   token: string
 }
 
-export default function LoginPage() {
+export default function LoginForm() {
   const router = useRouter()
   const { control, handleSubmit } = useForm<LoginValues>({
     defaultValues: {

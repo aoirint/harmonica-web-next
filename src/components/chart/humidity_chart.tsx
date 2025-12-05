@@ -1,24 +1,26 @@
 import { Box } from "@mui/material"
+import "@/lib/chartjs"
+
 import type { ChartOptions } from "chart.js"
 import { type ChartProps, Line } from "react-chartjs-2"
 
-interface LightDataPoint {
+interface HumidityDataPoint {
   value: number
   timestamp: number
 }
 
-interface LightChartProps {
-  lightData: LightDataPoint[]
+interface HumidityChartProps {
+  humidityData: HumidityDataPoint[]
 }
 
-export default function LightChart({ lightData }: LightChartProps) {
+export default function HumidityChart({ humidityData }: HumidityChartProps) {
   const data: ChartProps<"line">["data"] = {
-    labels: lightData.map((point) => point.timestamp),
+    labels: humidityData.map((point) => point.timestamp),
     datasets: [
       {
-        label: "Light",
-        yAxisID: "light",
-        data: lightData.map((point) => (point.value / 1023.0) * 100),
+        label: "Humidity",
+        yAxisID: "humidity",
+        data: humidityData.map((point) => point.value),
         fill: false,
         tension: 0,
       },
@@ -43,7 +45,7 @@ export default function LightChart({ lightData }: LightChartProps) {
           maxTicksLimit: 20,
         },
       },
-      light: {
+      humidity: {
         position: "left",
         suggestedMin: 0,
         suggestedMax: 100,
