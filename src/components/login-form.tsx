@@ -3,16 +3,18 @@
 import { Box, Button, Container, TextField } from "@mui/material"
 import Head from "next/head"
 import { useRouter } from "next/navigation"
-import { useEffect } from "react"
 import { Controller, useForm } from "react-hook-form"
-import { hasToken, setToken } from "../lib/auth"
+import { setToken } from "@/lib/auth"
 import AnonymousAppBar from "./app_bar/anonymous_app_bar"
+import { useAuthRedirect } from "./auth-redirect"
 
 export interface LoginValues {
   token: string
 }
 
 export default function LoginForm() {
+  useAuthRedirect()
+
   const router = useRouter()
   const { control, handleSubmit } = useForm<LoginValues>({
     defaultValues: {
@@ -24,12 +26,6 @@ export default function LoginForm() {
     setToken(values.token)
     router.push("/")
   }
-
-  useEffect(() => {
-    if (hasToken()) {
-      router.push("/")
-    }
-  })
 
   return (
     <div>

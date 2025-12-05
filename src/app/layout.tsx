@@ -6,7 +6,7 @@ import { Noto_Sans_JP } from "next/font/google"
 import "./globals.css"
 
 import { InitColorSchemeScript } from "@mui/material"
-import theme from "../theme"
+import theme from "@/theme"
 import ApolloProviderClient from "./apollo-provider"
 
 const notoSansJp = Noto_Sans_JP({
