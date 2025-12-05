@@ -1,5 +1,6 @@
 import { Box } from "@mui/material"
 import dayjs from "dayjs"
+import Image from "next/image"
 
 interface SmokePingChartImageProps {
   smokePingUrl: string
@@ -24,8 +25,11 @@ export default function SmokePingChartImage({
 
   return (
     <Box>
-      <img
+      <Image
         src={smokePingImageUrl.toString() ?? "#"}
+        alt="SmokePing Chart"
+        width={697}
+        height={310}
         style={{
           width: "100%",
         }}

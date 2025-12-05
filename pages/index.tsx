@@ -192,8 +192,11 @@ export default function HomePage() {
               <Typography variant="h6" component="h2" sx={{ mb: 1 }}>Traffic / GiB</Typography>
               <TrafficChart trafficData={calibratedData?.l12TrafficDaily ?? []} />
             </Grid> */}
-            {smokePingEntries.map((smokePing, index) => (
-              <Grid size={{ xs: 12, md: 4 }} key={index}>
+            {smokePingEntries.map((smokePing) => (
+              <Grid
+                size={{ xs: 12, md: 4 }}
+                key={`${smokePing.name}-${smokePing.url}-${smokePing.target}`}
+              >
                 <Typography variant="h6" component="h2" sx={{ mb: 1 }}>
                   {smokePing.name}
                 </Typography>
