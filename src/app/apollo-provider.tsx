@@ -9,7 +9,7 @@ import {
 import { setContext } from "@apollo/client/link/context"
 
 import { type ReactNode, useMemo } from "react"
-import { getToken } from "../lib/auth"
+import { getToken } from "@/lib/auth"
 
 function createApolloClient() {
   const httpLink = createHttpLink({

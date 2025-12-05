@@ -9,20 +9,19 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material"
-import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import dayjs from "@/lib/dayjs"
-import MainAppBar from "../components/app_bar/main_app_bar"
-import Co2Chart from "../components/chart/co2_chart"
-import HumidityChart from "../components/chart/humidity_chart"
-import LightChart from "../components/chart/light_chart"
-import TemperatureChart from "../components/chart/temperature_chart"
-import SmokePingChartImage from "../components/smoke_ping_chart_image"
-import { hasToken } from "../lib/auth"
-import { useGetMonitorQuery } from "../lib/graphql-types"
+import MainAppBar from "@/components/app_bar/main_app_bar"
+import Co2Chart from "@/components/chart/co2_chart"
+import HumidityChart from "@/components/chart/humidity_chart"
+import LightChart from "@/components/chart/light_chart"
+import TemperatureChart from "@/components/chart/temperature_chart"
+import SmokePingChartImage from "@/components/smoke_ping_chart_image"
+import { useGetMonitorQuery } from "@/lib/graphql-types"
+import { useAuthRedirect } from "./auth-redirect"
 
 export default function Monitor() {
-  const router = useRouter()
+  useAuthRedirect()
 
   const smokePingNames =
     process.env.NEXT_PUBLIC_SMOKEPING_NAMES?.split(",") ?? []
@@ -113,12 +112,6 @@ export default function Monitor() {
     co2DataCount > 0
       ? calibratedData?.mhz19Co2?.[co2DataCount - 1]?.value
       : undefined
-
-  useEffect(() => {
-    if (!hasToken()) {
-      router.push("/login/")
-    }
-  })
 
   // Refresh data every 1 minute
   // Reload page every 60 minutes
