@@ -160,11 +160,11 @@ refactor(interop): remove redundant role checks
 ```
 
 ```text
-fix(input): ignore hotkeys while local player is busy
+fix(input): ignore shortcuts while input is disabled
 ```
 
 ```text
-feat!: require current game interop adapters
+feat!: require current API adapters
 
 BREAKING CHANGE: legacy versioned adapters are no longer loaded.
 ```

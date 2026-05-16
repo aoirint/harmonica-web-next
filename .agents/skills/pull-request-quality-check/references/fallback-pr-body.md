@@ -90,7 +90,7 @@ Optional H3 examples:
 
 <!--
 List the checks you ran and their results.
-Include commands, manual in-game checks, screenshots, or videos when relevant.
+Include commands, manual browser checks, screenshots, or videos when relevant.
 For docs-only changes, mention proofreading, link checks, formatting checks,
 or "Not run - docs only."
 If you did not run a relevant check, explain why.

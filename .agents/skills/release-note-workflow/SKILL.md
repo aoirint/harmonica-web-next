@@ -95,7 +95,7 @@ description: >-
      or why a release was yanked.
    - A sourced user impact statement can serve as the reason/background sentence
      only when it explains why users should care.
-   - Use conservative negative-impact summaries, such as "no gameplay changes",
+   - Use conservative negative-impact summaries, such as "no user-visible behavior changes",
      only when the canonical changelog or maintainer input supports that
      conclusion for the target release.
    - Generic source bullets such as documentation updates, dependency updates,
