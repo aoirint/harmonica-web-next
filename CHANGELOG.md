@@ -7,6 +7,8 @@ and uses the repository tags and merged pull requests as its source of truth.
 
 ## [Unreleased]
 
+## [v0.6.0] - 2026-05-16 UTC
+
 ### Added
 
 - Added repository-local Agent Skills and root agent guidance for future
@@ -32,11 +34,6 @@ and uses the repository tags and merged pull requests as its source of truth.
   [Node.gitignore template][node-gitignore-template] and kept
   project-specific ignores for generated work directories, agent worktrees,
   `.vercel/`, `next-env.d.ts`, and environment files ([#70]).
-
-### Notes
-
-- No release version or UTC release date has been selected for the changes
-  above, so they remain under [Unreleased].
 
 ## [v0.5.2] - 2026-01-10 UTC
 
@@ -190,7 +187,8 @@ and uses the repository tags and merged pull requests as its source of truth.
   `ua-parser-js`, and `luxon` during early maintenance ([#4], [#5], [#6],
   [#7], [#8], [#21]).
 
-[Unreleased]: https://github.com/aoirint/harmonica/compare/0.5.2...main
+[Unreleased]: https://github.com/aoirint/harmonica/compare/0.6.0...main
+[v0.6.0]: https://github.com/aoirint/harmonica/releases/tag/0.6.0
 [v0.5.2]: https://github.com/aoirint/harmonica/releases/tag/0.5.2
 [v0.5.1]: https://github.com/aoirint/harmonica/releases/tag/0.5.1
 [v0.5.0]: https://github.com/aoirint/harmonica/releases/tag/0.5.0
