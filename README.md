@@ -7,7 +7,7 @@
 ## Development Environment
 
 - Node 24
-- pnpm 10
+- pnpm 11
 
 ## Run the development server
 

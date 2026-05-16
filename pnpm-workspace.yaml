@@ -4,9 +4,15 @@ engineStrict: true
 # Enable save-exact
 savePrefix: ''
 
-# Delay the installation of newly published versions (minutes)
-minimumReleaseAge: 1440
+# Delays the installation of newly published versions (minutes)
+minimumReleaseAge: 10080
+
+# Rejects versions that downgrade authentication evidence
+trustPolicy: no-downgrade
+
+# Applies the trust policy only to recently published versions (minutes)
+trustPolicyIgnoreAfter: 10080
 
 # Dependencies allowed to run install scripts
-onlyBuiltDependencies:
-  - sharp
+allowBuilds:
+  sharp: true
