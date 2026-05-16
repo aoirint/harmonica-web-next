@@ -105,8 +105,8 @@ When a template exists:
 
 When no repository template exists, use
 [references/fallback-pr-body.md](references/fallback-pr-body.md). Keep its
-top-level headings, testing subsection order, and CLA checklist unless the
-repository policy explicitly says otherwise.
+top-level headings and testing subsection order unless the repository policy
+explicitly says otherwise.
 
 ## Verification Evidence
 

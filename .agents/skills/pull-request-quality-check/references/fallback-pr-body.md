@@ -2,8 +2,6 @@
 
 Use this fallback only when the repository has no applicable pull request
 template. If a repository template exists, the live template takes precedence.
-Use the pull request template section guidance in
-`CONTRIBUTING.md#pull-requests`.
 
 ## Contents
 
@@ -119,16 +117,4 @@ Paste the relevant output here.
 ### Manual checks
 ### Screenshots / videos
 -->
-
-## Checklist
-
-<!--
-Check this item before submitting.
-Pull requests cannot be merged without Contribution License Agreement
-confirmation.
--->
-
-As the pull request author, I have checked all required items:
-
-- [ ] I have read `CONTRIBUTING.md` and agree to the Contribution License Agreement.
 ````
