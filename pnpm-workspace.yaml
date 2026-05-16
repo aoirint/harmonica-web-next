@@ -1,12 +1,15 @@
 # Enforce engine versions in package.json
 engineStrict: true
 
-# Enable save-exact
-savePrefix: ''
+# Delays the installation of newly published versions (minutes)
+minimumReleaseAge: 10080
 
-# Delay the installation of newly published versions (minutes)
-minimumReleaseAge: 1440
+# Rejects versions that downgrade authentication evidence
+trustPolicy: no-downgrade
+
+# Prevents installation of packages with exotic dependencies (e.g. git, file, link)
+blockExoticSubdeps: true 
 
 # Dependencies allowed to run install scripts
-onlyBuiltDependencies:
-  - sharp
+allowBuilds:
+  sharp: true
