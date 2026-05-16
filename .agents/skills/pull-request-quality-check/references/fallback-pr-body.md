@@ -106,7 +106,7 @@ Optional testing structure:
 <details>
 
 ```plain
-$ DOTNET_CLI_UI_LANGUAGE=en dotnet build
+$ <build or verification command>
 Paste the relevant output here.
 ```
 
