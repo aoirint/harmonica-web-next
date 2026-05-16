@@ -4,9 +4,6 @@ engineStrict: true
 # Delays the installation of newly published versions (minutes)
 minimumReleaseAge: 10080
 
-# Rejects versions that downgrade authentication evidence
-trustPolicy: no-downgrade
-
 # Dependencies allowed to run install scripts
 allowBuilds:
   sharp: true
