@@ -7,9 +7,6 @@ minimumReleaseAge: 10080
 # Rejects versions that downgrade authentication evidence
 trustPolicy: no-downgrade
 
-# Prevents installation of packages with exotic dependencies (e.g. git, file, link)
-blockExoticSubdeps: true 
-
 # Dependencies allowed to run install scripts
 allowBuilds:
   sharp: true
