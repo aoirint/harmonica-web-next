@@ -1,9 +1,6 @@
 # Enforce engine versions in package.json
 engineStrict: true
 
-# Enable save-exact
-savePrefix: ''
-
 # Delays the installation of newly published versions (minutes)
 minimumReleaseAge: 10080
 
