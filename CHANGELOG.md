@@ -9,8 +9,7 @@ and uses the repository tags and merged pull requests as its source of truth.
 
 ### Added
 
-- Added repository-local [Agent Skills](.agents/skills/) and
-  [root agent guidance](AGENTS.md) for future
+- Added repository-local Agent Skills and root agent guidance for future
   repository maintenance workflows. This preserves review, security,
   changelog, release-note, issue, gitignore, GitHub Actions, and worktree
   procedures inside the repository so later automation work can follow the same
@@ -140,8 +139,8 @@ and uses the repository tags and merged pull requests as its source of truth.
 
 ### Added
 
-- Added the [GitHub Actions lint workflow](.github/workflows/lint.yml) so pull
-  requests and main-branch changes run the project linter in CI ([#29]).
+- Added the GitHub Actions lint workflow so pull requests and main-branch
+  changes run the project linter in CI ([#29]).
 
 ### Changed
 
