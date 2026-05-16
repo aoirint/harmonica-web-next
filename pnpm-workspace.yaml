@@ -1,20 +1,17 @@
 # Enforce engine versions in package.json
 engineStrict: true
 
+# Enable save-exact
+savePrefix: ''
+
 # Delays the installation of newly published versions (minutes)
 minimumReleaseAge: 10080
 
 # Rejects versions that downgrade authentication evidence
 trustPolicy: no-downgrade
 
-# Exceptions to the trust policy
-trustPolicyExclude:
-  # semver v6 is a transitive dependency of next.
-  # semver@7.5.1 (2023-05-13 UTC) has provenance evidence.
-  # semver@6.3.1 (2023-07-10 UTC) was published after semver@7.5.1, but has no provenance evidence.
-  # pnpm rejects semver@6.3.1 because it would downgrade authentication evidence.
-  # semver@6.3.0 (2019-07-23 UTC) is not an option due to CVE-2022-25883.
-  - "semver@6.3.1"
+# Applies the trust policy only to recently published versions (minutes)
+trustPolicyIgnoreAfter: 10080
 
 # Dependencies allowed to run install scripts
 allowBuilds:
